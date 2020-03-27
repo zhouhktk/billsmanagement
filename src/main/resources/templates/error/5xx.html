@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>500</title>
+</head>
+<body>
+<h2>出错了
+    <p th:text="${timestamp}"></p>
+    <p th:text="${status}"></p>
+    <p th:text="${message}"></p>
+    <!--<p th:text="${exception}"></p>-->
+    <p th:text="${error}"></p>
+
+    <!--自定义错误响应数据-->
+    <p th:text="${company}"></p>
+</h2>
+</body>
+</html>

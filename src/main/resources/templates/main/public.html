@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>账单管理系统</title>
+    <link rel="stylesheet" th:href="@{/css/public.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<!--头部-->
+<header th:fragment="head_title" class="publicHeader">
+    <h1>账单管理系统</h1>
+
+    <div class="publicHeaderR">
+        <p><span style="color: #fff21b" >[[${session.user.username}]]</span>，欢迎你！</p>
+    </div>
+</header>
+
+<section class="publicMian ">
+    <div th:fragment="left" class="left">
+        <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
+        <nav>
+            <ul class="list">
+                <li th:id="${activeUri == 'bill'?'active':''}">
+                    <a th:href="@{/bills}">账单管理</a>
+                </li>
+                <li th:id="${activeUri == 'provider'?'active':''}">
+                    <a th:href="@{/providers}">供应商管理</a>
+                </li>
+                <li th:id="${activeUri == 'user'?'active':''}">
+                    <a th:href="@{/users}">用户管理</a>
+                </li>
+                <li th:id="${activeUri == 'pwd'?'active':''}">
+                    <a th:href="@{/user/pwd}">密码修改</a>
+                </li>
+                <li>
+                    <a th:href="@{/logout}">退出系统</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<!--点击删除按钮后弹出的页面-->
+<div class="zhezhao"></div>
+<form method="post" id="deleteForm">
+    <input type="hidden" name="_method" value="delete">
+    <div class="remove" id="removeProv">
+        <div class="removerChid">
+            <h2>提示</h2>
+            <div class="removeMain" >
+                <p>你确定要删除吗？</p>
+                <a href="#" id="yes">确定</a>
+                <a href="#" id="no">取消</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{main/public::head}"></head>
+<body>
+<!--头部-->
+<header th:replace="~{main/public::head_title}" class="publicHeader"></header>
+
+<!--主体内容-->
+<section class="publicMian">
+    <div th:replace="~{main/public::left(activeUri='user')}" class="left"></div>
+    </div>
+    <div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>用户管理页面 >> 用户添加页面</span>
+        </div>
+        <div class="providerAdd">
+            <form id="addForm" th:action="@{/user}" th:method="post">
+                <div>
+                    <label for="username">用户名：</label>
+                    <input type="text" name="username" id="username"/>
+                    <span>*请输入用户名，且不能重复</span>
+                </div>
+                <div>
+                    <label for="realName">真实姓名：</label>
+                    <input type="text" name="realName" id="realName"/>
+                    <span >*请输入真实姓名</span>
+                </div>
+                <div>
+                    <label for="userpassword">用户密码：</label>
+                    <input type="text"  name="userpassword" id="userpassword"/>
+                    <span>*密码长度必须大于6位小于20位</span>
+
+                </div>
+                <div>
+                    <label for="password">确认密码：</label>
+                    <input type="text" name="password" id="password"/>
+                    <span id="pwdText" >*请输入确认密码</span>
+                </div>
+                <div>
+                    <label >用户性别：</label>
+
+                    <select name="gender">
+                        <option value="1">女</option>
+                        <option value="2">男</option>
+                    </select>
+                    <span></span>
+                </div>
+                <div>
+                    <label for="birthday">出生日期：</label>
+                    <input type="text" name="birthday" id="birthday"/>
+                    <span >*格式 yyyy-MM-dd </span>
+                </div>
+                <div>
+                    <label >用户类别：</label>
+                    <input type="radio" name="userType" value="1" />管理员
+                    <input type="radio" name="userType" value="2" checked/>经理
+                    <input type="radio" name="userType" value="3"/>普通用户
+                </div>
+                <div class="providerAddBtn">
+                    <input type="button" id="save" value="保存" />
+                    <input type="button" value="返回" onclick="history.back(-1)"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script th:src="@{/js/jquery.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        //点击 确定
+        $('#save').click(function () {
+            //校验密码
+            if($("#userpassword").val().trim() == '' ||
+                $("#password").val().trim() == '' ||
+                $("#userpassword").val() != $("#password").val()) {
+                $("#pwdText").replaceWith("<span id='pwdText' style='color: red'>*请输入正确的确认密码.</span>");
+                return;
+            }
+            $("#addForm").submit();
+        });
+
+    });
+</script>
+
+</body>
+</html>

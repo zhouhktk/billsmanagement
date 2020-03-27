@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{main/public::head}"></head>
+<body class="login_bg">
+<section class="loginBox">
+    <header class="loginHeader">
+        <h1>账单管理系统</h1>
+    </header>
+    <section class="loginCont">
+        <div th:if="${not #strings.isEmpty(msg)}" th:text="${msg}" style="color:red; margin-left: 130px"></div>
+        <form class="loginForm" th:action="@{/sign}" method="post">
+
+            <div class="inputbox">
+                <label for="user" th:text="#{login.username}"></label>
+                <input id="user" type="text" name="username" required/>
+            </div>
+            <div class="inputbox">
+                <label for="mima" th:text="#{login.password}"></label>
+                <input id="mima" type="password" name="password" required/>
+            </div>
+            <div class="subBtn">
+                <input type="checkbox">[[#{login.remember}]]
+            </div>
+            <br/>
+            <div class="subBtn">
+                <input type="submit" th:value="#{login.submit}"/>
+                <input type="reset" th:value="#{login.reset}"/>
+            </div>
+            <br/>
+            <div style="margin-left: 100px;">
+                <a th:href="@{/login(l='zh_CN')}">中文</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{/login(l='en_US')}">English</a>
+            </div>
+        </form>
+    </section>
+</section>
+</body>
+</html>

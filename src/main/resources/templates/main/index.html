@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{main/public::head}"></head>
+<body>
+<!--头部-->
+<header th:replace="~{main/public::head_title}"></header>
+
+<!--主体内容-->
+<section class="publicMian">
+    <div th:replace="~{main/public::left}"></div>
+    <div class="right">
+        <div class="wFont">
+            <h2 align="center" th:text="${session.user.username}"></h2>
+            <h2 align="center">欢迎来到账单管理系统!</h2>
+        </div>
+    </div>
+</section>
+</body>
+</html>
